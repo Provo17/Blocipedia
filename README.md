@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 == README
 
 This README would normally document whatever steps are necessary to get the
@@ -26,3 +27,7 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+=======
+# Blocipedia
+A production quality SaaS app that allows users to create their own wikis.
+>>>>>>> aa6458b5f30f47ff1c787ff7804abcf581bf8523
