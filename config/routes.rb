@@ -2,8 +2,8 @@ Rails.application.routes.draw do
     
   resources :wikis
 
-    devise_for :users
+  devise_for :users
     
-    root 'wikis#index'
+  root 'wikis#index'
     
 end
