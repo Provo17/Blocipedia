@@ -1,5 +1,5 @@
 require 'rails_helper'
-include Devise::TestHelpers
+#include Devise::TestHelpers
 
 RSpec.describe WikisController, type: :controller do
   
@@ -7,6 +7,9 @@ RSpec.describe WikisController, type: :controller do
   
   let(:my_user) { create(:user) }
   let(:my_wiki) { Wiki.create!(title: "New Wiki Title", body: "New wiki body" ) } 
+  before :each do 
+    sign_in :user, my_user
+  end
 
   describe "GET #index" do
     
