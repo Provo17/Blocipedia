@@ -1,15 +1,16 @@
 require 'rails_helper'
-#include Devise::TestHelpers
+include Devise::TestHelpers
 
 RSpec.describe WikisController, type: :controller do
   
-
+  before do
+    @user = create(:user)
+    sign_in @user
+  end
   
   let(:my_user) { create(:user) }
-  let(:my_wiki) { Wiki.create!(title: "New Wiki Title", body: "New wiki body" ) } 
-  before :each do 
-    sign_in :user, my_user
-  end
+  let(:my_wiki) { Wiki.create!(title: "New Wiki Title", body: "New wiki body", user: my_user ) } 
+  
 
   describe "GET #index" do
     
@@ -42,9 +43,14 @@ RSpec.describe WikisController, type: :controller do
       get :new
       expect(assigns(:wiki)).to_not be_nil
     end
+  end
     
+    
+  describe "WIKI create" do
+    
+      
     it "increases the number of wiki by 1" do
-      expect{wiki :create, wiki: {title: "New wiki title", body: "New wiki body"}}
+      expect{wiki :create, wiki: {title: "New wiki title", body: "New wiki body"}}.to change(Wiki,:count).by(1)
     end
     
     it "assigns the new wiki to @wiki" do
@@ -54,7 +60,7 @@ RSpec.describe WikisController, type: :controller do
     
     it "redirects to the new wiki" do
       wiki :create, wiki: {title: "New wiki title", body: "New wiki body"}
-      expect(response).to redirect_to Wiki.last
+      expect(response).to redirect_to [Wiki.last]
     end
   end  
   
@@ -74,7 +80,7 @@ RSpec.describe WikisController, type: :controller do
     
     it "assigns my_wiki to @wiki" do 
       get :show, {id: my_wiki.id}
-      expect(assigns(:post)).to eq(my_wiki)
+      expect(assigns(:wiki)).to eq(my_wiki)
     end
   end
 
@@ -98,8 +104,8 @@ RSpec.describe WikisController, type: :controller do
       wiki_insatnce = assigns(:wiki)
       
       expect(wiki_insatnce.id).to eq my_wiki.id
-      expect(wiki_insatnce.id).to eq my_wiki.title
-      expect(wiki_insatnce.id).to eq my_wiki.body
+      expect(wiki_insatnce.title).to eq my_wiki.title
+      expect(wiki_insatnce.body).to eq my_wiki.body
     end
   end
   
