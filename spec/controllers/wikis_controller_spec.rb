@@ -50,7 +50,7 @@ RSpec.describe WikisController, type: :controller do
     
       
     it "increases the number of wiki by 1" do
-      expect{wiki :create, wiki: {title: "New wiki title", body: "New wiki body"}}.to change(Wiki,:count).by(1)
+      expect{create( :wiki)}.to change(Wiki,:count).by(1) #changed notation
     end
     
     it "assigns the new wiki to @wiki" do
