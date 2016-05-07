@@ -36,7 +36,13 @@ RSpec.describe User, type: :model do
     it "is standard by default" do
       expect(user.role).to eq("standard")
     end
+    
     context "standard user" do
+      
+      before do
+        user.standard!
+      end
+      
       it "returns true for standard?" do
         expect(user.standard?).to be_truthy
       end
