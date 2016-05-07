@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   #validates :username, :presence => true, :uniqueness => {:case_sensitive => false}
   
   has_many :wikis
+  
+  before_save {self.email = email.downcase}
+  after_initialize { self.role ||= :standard}  
+  enum role: [:standard, :premium, :admin]
 end
