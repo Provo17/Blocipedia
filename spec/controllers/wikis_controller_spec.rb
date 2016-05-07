@@ -54,13 +54,12 @@ RSpec.describe WikisController, type: :controller do
     end
     
     it "assigns the new wiki to @wiki" do
-      wiki :create, wiki: {title: "New wiki title", body: "New wiki body"}
       expect(assigns(:wiki)).to eq Wiki.last
     end
     
     it "redirects to the new wiki" do
-      wiki :create, wiki: {title: "New wiki title", body: "New wiki body"}
-      expect(response).to redirect_to [Wiki.last]
+      post :create, wiki: {title: "New wiki title", body: "New wiki body"}
+      expect(response).to redirect_to Wiki.last
     end
   end  
   
