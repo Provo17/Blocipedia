@@ -34,4 +34,5 @@ source 'https://rubygems.org'
  gem 'devise'
  #css bootstrap
  gem 'bootstrap-sass'
-
+ # Pundit for user authorization
+ gem "pundit"
