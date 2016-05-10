@@ -37,3 +37,7 @@ source 'https://rubygems.org'
  gem 'bootstrap-sass'
  # Pundit for user authorization
  gem "pundit"
+ #payment gateway
+ gem 'stripe'
+ #an elegant solution for handling sensitive data with environment variables
+ gem 'figaro'
