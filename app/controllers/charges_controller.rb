@@ -1,3 +1,4 @@
+class ChargesController < ActionController::Base
  def create
    # Creates a Stripe Customer object, for associating
    # with the charge
@@ -28,7 +29,8 @@
   def new
    @stripe_btn_data = {
      key: "#{ Rails.configuration.stripe[:publishable_key] }",
-     description: "BigMoney Membership - #{current_user.name}",
-     amount: Amount.default
+     description: "BigMoney Membership - #{current_user}",
+     amount: 15_00
    }
   end
+end
