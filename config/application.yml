@@ -1,0 +1,13 @@
+# Add configuration values here, as shown below.
+#
+# pusher_app_id: "2954"
+# pusher_key: 7381a978f7dd7f9a1117
+# pusher_secret: abdc3b896a0ffb85d373
+STRIPE_SECRET_KEY: sk_test_XSB7tHa6ylxVLBWAK0LrioJP
+STRIPE_PUBLISHABLE_KEY: pk_test_LMc2hhelxk5eAJcigjuc1EbD
+#
+
+
+STRIPE_PASSWORD: Prov23091709
+STRIPE_USERNAME: provo17.gp@gmail.com
+ 
