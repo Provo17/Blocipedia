@@ -18,7 +18,6 @@ source 'https://rubygems.org'
    gem 'rspec-rails', '~> 3.0'
    gem 'shoulda'
    gem 'factory_girl_rails', '~> 4.0'
-   gem 'faker'
  end
  
  # Use SCSS for stylesheets
@@ -41,3 +40,6 @@ source 'https://rubygems.org'
  gem 'stripe'
  #an elegant solution for handling sensitive data with environment variables
  gem 'figaro'
+ #seeding data
+ gem 'faker'
+
