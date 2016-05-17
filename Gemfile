@@ -18,6 +18,7 @@ source 'https://rubygems.org'
    gem 'rspec-rails', '~> 3.0'
    gem 'shoulda'
    gem 'factory_girl_rails', '~> 4.0'
+   gem 'stripe-ruby-mock', '~> 2.2.4', :require => 'stripe_mock'
  end
  
  # Use SCSS for stylesheets
