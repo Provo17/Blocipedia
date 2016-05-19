@@ -43,4 +43,6 @@ source 'https://rubygems.org'
  gem 'figaro'
  #seeding data
  gem 'faker'
+ #for markdown syntax
+ gem 'redcarpet'
 
