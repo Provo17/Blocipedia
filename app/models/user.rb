@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   before_save {self.email = email.downcase}
   after_initialize { self.role ||= :standard}  
   enum role: [:standard, :premium, :admin]
+  
+  def downgrade(user)
+    user.standard!
+  end
 end

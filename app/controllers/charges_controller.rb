@@ -25,7 +25,8 @@ class ChargesController < ActionController::Base
      currency: 'usd'
    )
  
-   flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
+   flash[:notice] = "Thanks for all the money, #{current_user.email}! Thaks, enjoy!"
+   current_user.premium!
    redirect_to wikis_path # or wherever
  
    # Stripe will send back CardErrors, with friendly messages
