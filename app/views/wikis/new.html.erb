@@ -11,6 +11,12 @@
                 <%= f.label :body %>
                 <%= f.text_area :body,  rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
             </div>
+            
+            <% if current_user.premium? %>
+            <%= f.label :private? %>
+            <%= f.check_box :private, {}, "true", "false" %>   
+            <% end %>
+
             <div class="form-group">
                 <%= f.submit "Save" %>
             </div>    

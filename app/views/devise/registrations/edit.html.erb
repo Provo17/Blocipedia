@@ -32,8 +32,31 @@
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<% if current_user.standard? %>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <h3>Upgrade my account</h3>
 
-<%= link_to "Back", :back %>
+  <%= form_tag charges_path do %>
+  <div class="stripe-button-container">
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button active" data-key="pk_test_LMc2hhelxk5eAJcigjuc1EbD" data-amount="2000" data-name="Demo Site" data-description="2 widgets" data-image="/img/documentation/checkout/marketplace.png" data-locale="auto" data-notrack="">
+  1
+  </script>
+  <button type="submit" class="stripe-button-el" style="visibility: visible;">
+  <span style="display: block; min-height: 30px;">Subscribe now!</span>
+  </button>
+  </div>
+  <%end%>
+  
+<% elsif current_user.premium? %>
+
+  <h3>Downgrade to standard</h3>
+  
+  <p>No more private wikis! <%= button_to "Downgrade", downgrade_user_path(current_user), data: { confirm: "Are you sure?" }, method: :put %></p>
+
+<% end %>
+
+  <h3>Cancel my account</h3>
+
+  <p>Sorry to see you leave =( <%= button_to "Bye-Bye", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+  <%= link_to "Back", :back %>

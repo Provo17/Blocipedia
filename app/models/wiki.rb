@@ -5,5 +5,11 @@ class Wiki < ActiveRecord::Base
    validates :body, presence: true
    validates :user, presence: true
    
-   scope :visible_to, -> (user) { ((user.role == "admin") || (user.role == "premium")) ? all : where(private: false) }
+   default_scope { order('created_at DESC')}
+   
+   scope :visible_to, -> (user) { user ? all : where(private: false) }
+
+  def set_private
+    self.private = true
+  end
 end
