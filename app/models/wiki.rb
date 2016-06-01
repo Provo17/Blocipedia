@@ -7,7 +7,7 @@ class Wiki < ActiveRecord::Base
    
    default_scope { order('created_at DESC')}
    
-   scope :visible_to, -> (user) { user ? all : where(private: false) }
+   scope :visible_to, -> (user) { user ? all : where(public: true) }
 
   def set_private
     self.private = true

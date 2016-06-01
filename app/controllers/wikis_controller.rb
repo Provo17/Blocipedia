@@ -1,10 +1,10 @@
 class WikisController < ApplicationController
   
-	skip_before_filter :authenticate_user!, only: [:index, :show]
-	before_action :set_wiki, only: [:show, :edit, :update, :destroy]
+	#skip_before_filter :authenticate_user!, only: [:index, :show]
+	#before_action :set_wiki, only: [:show, :edit, :update, :destroy]
   
   def index
-    @wikis= policy_scope(Wiki)
+    @wikis = policy_scope(Wiki)
   end
 
   def new
@@ -37,6 +37,8 @@ class WikisController < ApplicationController
   end
   
   def update
+    @wiki = Wiki.find(params[:id])
+    #@wiki = Wiki.find_by_id(params[:id])
     @wiki.assign_attributes(wiki_params)
     @wiki.user = current_user
     authorize @wiki
@@ -67,11 +69,7 @@ class WikisController < ApplicationController
   private
 
   def wiki_params
-    if current_user.standard?
-      params.require(:wiki).permit(:title, :body)
-    else
       params.require(:wiki).permit(:title, :body, :private)
-    end
   end
 
   def set_wiki

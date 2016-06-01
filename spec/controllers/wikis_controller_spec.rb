@@ -9,7 +9,7 @@ RSpec.describe WikisController, type: :controller do
   end
   
   let(:my_user) { create(:user) }
-  let(:my_wiki) { Wiki.create!(title: "New Wiki Title", body: "New wiki body", user: my_user ) } 
+  let(:my_wiki) { Wiki.create!(title: "New wiki title", body: "New wiki body", user: my_user ) } 
   
 
   describe "GET #index" do
@@ -21,7 +21,9 @@ RSpec.describe WikisController, type: :controller do
     
     it "assigns my_wiki to @wiki" do
       get :index
-      expect(assigns(:wikis)).to eq([my_wiki])
+     controller_ids = assigns(@wikis).map{|w| w.id}
+     expected_ids = [my_wiki.id]
+     expect(controller_ids).to match_array(expected_ids)
     end
   end
   

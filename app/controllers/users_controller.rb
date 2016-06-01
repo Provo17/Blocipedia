@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
  
  def downgrade
-   user = current_user
-   user.downgrade(user)
-   if user.save
+   if current_user.role == 'premium'
+      current_user.downgrade!
      flash[:notice] = "Premium membership cancelled successfully."
      redirect_to wikis_path
    else
