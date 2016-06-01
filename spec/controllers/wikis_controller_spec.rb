@@ -9,7 +9,7 @@ RSpec.describe WikisController, type: :controller do
   end
   
   let(:my_user) { create(:user) }
-  let(:my_wiki) { Wiki.create!(title: "New Wiki Title", body: "New wiki body", user: my_user ) } 
+  let(:my_wiki) { Wiki.create!(title: "New wiki title", body: "New wiki body", user: my_user ) } 
   
 
   describe "GET #index" do
@@ -21,7 +21,7 @@ RSpec.describe WikisController, type: :controller do
     
     it "assigns my_wiki to @wiki" do
       get :index
-      expect(assigns(:wikis)).to eq([my_wiki])
+      expect(assigns(:wikis)).to eq(my_wiki)
     end
   end
   
@@ -140,7 +140,7 @@ RSpec.describe WikisController, type: :controller do
      it "deletes the wiki" do
        delete :destroy, {id: my_wiki.id}
        count = Wiki.where({id: my_wiki.id}).size
-       expect(count).to eq 0
+       expect(count).to eq(0)
      end
  
      it "redirects to wikis index" do

@@ -13,7 +13,15 @@
        </div>
        <div class="form-group">
          <%= f.submit "Save", class: 'btn btn-success' %>
-       </div>
+       </div>       
+       
+       <div class="form-group">
+       <% if current_user && (current_user.admin? || current_user.premium?) %>
+          <%= f.label :public, class: 'checkbox' do %>
+          <%= f.check_box :public %> Public wiki
+        <% end %>
+        </div>
+       <% end %>
      <% end %>
    </div>
  </div>

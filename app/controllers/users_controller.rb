@@ -1,14 +1,18 @@
 class UsersController < ApplicationController
-    
- def downgrade
-   user = current_user
-   user.downgrade(user)
-   if user.save
-     flash[:notice] = "Premium membership cancelled successfully."
-     redirect_to wikis_path
-   else
-     flash.now[:alert] = "There was an error cancelling your premium membership."
-     redirect_to wikis_path
-   end
- end
+ 
+  def downgrade
+    @user = current_user
+    @user.update_attributes(role: 'standard')
+
+    if @user.save
+        flash[:notice] = "Account downgraded to 'Standard'"
+        redirect_to wikis_path
+
+        @user.wikis.each do |wiki|
+          wiki.update_attribute(:public, true)
+          end
+    else
+        flash[:error] = "Could not downgrade your account"
+    end
+  end
 end

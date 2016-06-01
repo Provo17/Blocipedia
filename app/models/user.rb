@@ -12,7 +12,20 @@ class User < ActiveRecord::Base
   after_initialize { self.role ||= :standard}  
   enum role: [:standard, :premium, :admin]
   
-  def downgrade(user)
-    user.standard!
+  def downgrade!
+    self.role = 'standard'
+    self.save
+    if self.role == "standard"
+      make_wikis_public
+    else
+      redirect_to root_path
+      flash[:alert] = "There was an error downgrading your account, please try again."
+    end
+  end
+
+  def make_wikis_public
+    wikis.each do |wiki|
+      wiki.update_attributes!(private: false)
+    end
   end
 end

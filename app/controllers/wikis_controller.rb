@@ -1,9 +1,10 @@
 class WikisController < ApplicationController
   
-
+	#skip_before_filter :authenticate_user!, only: [:index, :show]
+	#before_action :set_wiki, only: [:show, :edit, :update, :destroy]
   
   def index
-    @wikis = Wiki.all
+    @wikis = policy_scope(Wiki)
   end
 
   def new
@@ -14,8 +15,8 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.public = params[:wiki][:public]
     @wiki.user = current_user
-
     
     if @wiki.save
       flash[:notice] = "\"#{@wiki.title}\" was created successfully."
@@ -28,19 +29,28 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
+    #authorize @wiki
+    
+    unless @wiki.public || current_user
+      flash[:alert] = "You must be signed in to view private topics."
+      redirect_to new_session_path
+    end    
   end
 
 
   def edit
     @wiki = Wiki.find(params[:id])
     @wiki.user = current_user
+    authorize @wiki
   end
   
   def update
     @wiki = Wiki.find(params[:id])
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.public = params[:wiki][:public] if params[:wiki][:public]
     @wiki.user = current_user
+    authorize @wiki
     
     if @wiki.save
       flash[:notice] = "Wiki was updated successfully"
@@ -54,6 +64,7 @@ class WikisController < ApplicationController
   def destroy
     @wiki = Wiki.find(params[:id])
     @wiki.user = current_user
+    authorize @wiki
      
      if @wiki.destroy
        flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
