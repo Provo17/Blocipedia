@@ -25,7 +25,7 @@ class ChargesController < ActionController::Base
      currency: 'usd'
    )
  
-   flash[:notice] = "Thanks for all the money, #{current_user.email}! Thaks, enjoy!"
+   flash[:notice] = "Thanks for your support, #{current_user.email}, enjoy!"
    current_user.premium!
    redirect_to wikis_path
  

@@ -21,9 +21,7 @@ RSpec.describe WikisController, type: :controller do
     
     it "assigns my_wiki to @wiki" do
       get :index
-     controller_ids = assigns(@wikis).map{|w| w.id}
-     expected_ids = [my_wiki.id]
-     expect(controller_ids).to match_array(expected_ids)
+      expect(assigns(:wikis)).to eq(my_wiki)
     end
   end
   
@@ -142,7 +140,7 @@ RSpec.describe WikisController, type: :controller do
      it "deletes the wiki" do
        delete :destroy, {id: my_wiki.id}
        count = Wiki.where({id: my_wiki.id}).size
-       expect(count).to eq 0
+       expect(count).to eq(0)
      end
  
      it "redirects to wikis index" do

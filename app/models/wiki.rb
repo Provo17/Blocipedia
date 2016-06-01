@@ -9,7 +9,7 @@ class Wiki < ActiveRecord::Base
    
    scope :visible_to, -> (user) { user ? all : where(public: true) }
 
-  def set_private
-    self.private = true
-  end
+  #def set_private
+    #self.private = true
+  #end
 end

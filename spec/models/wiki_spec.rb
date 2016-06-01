@@ -27,7 +27,7 @@ RSpec.describe Wiki, type: :model do
      
      before do
        @public_wiki = Wiki.create!(title: "new wiki title", body: "new wiki body", user: user)
-       @private_Wiki = Wiki.create!(title: "new wiki title", body: "new wiki body", user: user, private: true)
+      # @private_Wiki = Wiki.create!(title: "new wiki title", body: "new wiki body", user: user, private: true)
      end
  
      describe "visible_to(user)" do

@@ -11,15 +11,17 @@
          <%= f.label :body %>
          <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
        </div>
-       
-       <% if current_user.premium? %>
-       <%= f.label :private? %>
-       <%= f.check_box :private, {}, "true", "false" %>   
-       <% end %>
-       
        <div class="form-group">
          <%= f.submit "Save", class: 'btn btn-success' %>
-       </div>
+       </div>       
+       
+       <div class="form-group">
+       <% if current_user && (current_user.admin? || current_user.premium?) %>
+          <%= f.label :public, class: 'checkbox' do %>
+          <%= f.check_box :public %> Public wiki
+        <% end %>
+        </div>
+       <% end %>
      <% end %>
    </div>
  </div>
