@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     member do
       put :downgrade
     end
-  end  
+  end
+  
     
   root 'wikis#index'
     
