@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
   let(:user) { User.create!(email: "user@example.com", password: "password", role: "standard")}
   
   it { is_expected.to have_many(:wikis) }
-  
+  it { is_expected.to have_many(:wikis).through(:collaborators) }  
   describe "attributes" do
     
     it "has an email and password"do
