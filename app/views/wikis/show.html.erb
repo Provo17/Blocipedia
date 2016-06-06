@@ -4,6 +4,14 @@
    <div class="col-md-8">
      <p><%= markdown(@wiki.body) %></p>
    </div>
+   
+   <div>
+     <% if @wiki.public? != true %>
+     Collaborators:
+     <%= render partial: "collaborations/list", locals: { collaborators: @wiki.collaborators } %>
+     <% end %>
+  </div>   
+   
    <div class="col-md-4">
      <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
      <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-success' %>

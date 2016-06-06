@@ -16,6 +16,12 @@
           <%= f.submit "Save", class: 'btn btn-success' %>
         </div>
         
+
+        <% if current_user && current_user.premium? %>
+          <%= render partial: 'form', locals: { f: f, wiki: @wiki } %>
+          <%= render partial: 'collaborations/form', locals: { f: f, wiki: @wiki, collaborators: @wiki.collaborators } %>
+        <% end %>        
+        
         <% if current_user.admin? || current_user.premium? %>
           <div class="form-group">
             <%= f.label :public, class: 'checkbox' do %>
