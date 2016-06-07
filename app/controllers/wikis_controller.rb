@@ -15,14 +15,10 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
-    @wiki.public = params[:wiki][:public] || true
-    @wiki.user = current_user
-    collaborator = User.find_by_email(params[:collaborator_email])
+    @wiki.public = params[:wiki][:public] if params[:wiki][:public]
+    @wiki.collaborator = Collaborator.new
     
     if @wiki.save
-      if collaborator
-        @wiki.collaborators << collaborator
-      end
       flash[:notice] = "\"#{@wiki.title}\" was created successfully."
       redirect_to @wiki
     else
@@ -33,10 +29,10 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
-    #authorize @wiki
+    authorize @wiki
     
     unless @wiki.public 
-      if (current_user.admin? || @wiki.creator = current_user || @wiki.collaborators.include?(current_user))
+      if (current_user.admin? || @wiki.user = current_user || @wiki.collaborators.include?(current_user))
         @wiki = Wiki.find(params[:id])
       else
         flash[:alert] = "You must be signed in to view private topics."
@@ -48,7 +44,6 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
-    @wiki.creator = current_user
     authorize @wiki
   end
   
@@ -57,14 +52,16 @@ class WikisController < ApplicationController
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     @wiki.public = params[:wiki][:public] if params[:wiki][:public]
-    @wiki.creator = current_user
     authorize @wiki
-    collaborator = User.find_by_email(params[:collaborator_email])
+  
     
     if @wiki.save
-      if collaborator && !@wiki.collaborators.include?(collaborator)
-        @wiki.collaborators << collaborator
-      end  
+      if params[:wiki][:collaborators]
+        @collaborator = Collaborator.new
+        @collaborator.user = User.find(params[:wiki][:collaborators])
+        @collaborator.wiki = @wiki
+        @collaborator.save
+      end
       flash[:notice] = "Wiki was updated successfully"
       redirect_to @wiki
     else

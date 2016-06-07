@@ -6,10 +6,8 @@ class User < ActiveRecord::Base
          
 
   
-  has_many :created_wikis, dependent: :destroy, class_name: "Wiki"
-
-  has_many :collaborations
-  has_many :collaborating_wikis, through: :collaborations, class_name: "Wiki", source: :wiki
+  has_many :wikis, dependent: :destroy
+  has_many :collaborators, through: :wikis
   
   before_save {self.email = email.downcase}
   after_initialize { self.role ||= :standard}  

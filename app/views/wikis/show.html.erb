@@ -6,10 +6,11 @@
    </div>
    
    <div>
-     <% if @wiki.public? != true %>
-     Collaborators:
-     <%= render partial: "collaborations/list", locals: { collaborators: @wiki.collaborators } %>
-     <% end %>
+    <p>Collaborators: 
+      <% @wiki.collaborators.each do | collaborator | %>
+      <%= collaborator.user.email %>
+      <% end %>
+    </p>
   </div>   
    
    <div class="col-md-4">
