@@ -24,7 +24,9 @@
     <% if current_user.admin? || current_user.premium? %>
       <h4>Add Collaborators</h4>
       <div class="form-group">
-        <%= f.select "collaborators", options_from_collection_for_select(User.all, :id, :email), {include_blank: true} %>
+         <% if current_user && current_user.premium? %>
+          <%= render partial: 'collaborations/form', locals: { f: f, wiki: @wiki, collaborators: @wiki.collaborators } %>
+        <% end %> 
       </div>
     <% end %>
     

@@ -1,7 +1,7 @@
 <div>
 <% unless @wiki.collaborators.empty?  %>
   <% @wiki.collaborators.each do |collaborator| %>
-  <%= collaborator.email %>
+  <%= collaborator.email %>,
   <%  end %>
 <% end %>
 </div>

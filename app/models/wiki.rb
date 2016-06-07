@@ -1,8 +1,8 @@
 class Wiki < ActiveRecord::Base
     
   belongs_to :user
-  has_many :collaborators, dependent: :destroy
-  has_many :users, through: :collaborators, :source => :wiki
+  has_many :collaborations, dependent: :destroy
+  has_many :collaborators, through: :collaborations, source: :user
   
    validates :title, presence: true
    validates :body, presence: true

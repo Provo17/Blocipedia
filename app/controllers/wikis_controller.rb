@@ -15,10 +15,15 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.user = current_user
     @wiki.public = params[:wiki][:public] if params[:wiki][:public]
-    @wiki.collaborator = Collaborator.new
+    collaborator = User.find_by_email(params[:collaborator_email])
+
     
     if @wiki.save
+      if collaborator 
+        @wiki.collaborators << collaborator
+      end
       flash[:notice] = "\"#{@wiki.title}\" was created successfully."
       redirect_to @wiki
     else
@@ -53,14 +58,12 @@ class WikisController < ApplicationController
     @wiki.body = params[:wiki][:body]
     @wiki.public = params[:wiki][:public] if params[:wiki][:public]
     authorize @wiki
-  
+    collaborator = User.find_by_email(params[:collaborator_email])
+
     
     if @wiki.save
-      if params[:wiki][:collaborators]
-        @collaborator = Collaborator.new
-        @collaborator.user = User.find(params[:wiki][:collaborators])
-        @collaborator.wiki = @wiki
-        @collaborator.save
+      if collaborator 
+        @wiki.collaborators << collaborator
       end
       flash[:notice] = "Wiki was updated successfully"
       redirect_to @wiki
