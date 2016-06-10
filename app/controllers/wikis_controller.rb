@@ -15,6 +15,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.public = params[:wiki][:public] if params[:wiki][:public]
     @wiki.user = current_user
     @wiki.public = params[:wiki][:public] if params[:wiki][:public]
     collaborator = User.find_by_email(params[:collaborator_email])
