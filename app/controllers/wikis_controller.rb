@@ -62,7 +62,7 @@ class WikisController < ApplicationController
 
     
     if @wiki.save
-      if collaborator 
+      if collaborator && !@wiki.collaborators.include?(collaborator)
         @wiki.collaborators << collaborator
       end
       flash[:notice] = "Wiki was updated successfully"

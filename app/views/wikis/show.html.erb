@@ -14,7 +14,9 @@
    <div class="col-md-12">
     <h3>Collaborators:</h3> 
       <% if !@wiki.collaborators.empty?%>
-      <%= render partial: "collaborations/listing", locals: { collaborators: @wiki.collaborators } %>
+        <% @wiki.collaborators.each do |collaborator| %>
+        <%= collaborator.email %></br>
+        <% end %>
       <% end %>
    </div> 
  </div>
