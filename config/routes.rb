@@ -2,7 +2,7 @@ Rails.application.routes.draw do
     
   resources :wikis
   
-  resources :wikis, only: [] do
+  resources :wikis, only: [] do             #needed to loop through wikis and collaborators to link the collaborator with the correct wiki id
     resources :collaborators, only: [] do
       member do
         put :delete

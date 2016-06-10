@@ -1,7 +1,9 @@
 <div>
 <% unless @wiki.collaborators.empty?  %>
   <% @wiki.collaborators.each do |collaborator| %>
-  <%= collaborator.email %> <%= link_to "Remove Collaborator", delete_wiki_collaborator_path(@wiki, id: collaborator.id), method: :put, class: "btn btn-danger" %></br>
+  <%= collaborator.email %> <%= link_to "Remove Collaborator", delete_wiki_collaborator_path(@wiki, id: collaborator.id), method: :put, class: "btn btn-danger" %> </br>
   <%  end %>
 <% end %>
 </div>
+
+<!--# only applied this to the edit view.-->

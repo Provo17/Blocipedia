@@ -11,3 +11,5 @@ class CollaboratorsController < ApplicationController
         redirect_to wikis_path
   end
 end
+
+# used the collaborator controller strictly for deleting a collaborator instead of adding it in the wikis controller
