@@ -6,7 +6,8 @@ RSpec.describe Wiki, type: :model do
   let(:wiki) {create("wiki")}
   
   it { is_expected.to belong_to(:user) }
-  
+  it { is_expected.to have_many(:users).through(:collaborators)}
+    
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_presence_of(:body) }
   it { is_expected.to validate_presence_of(:user) }

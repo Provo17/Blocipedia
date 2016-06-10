@@ -20,6 +20,16 @@
           <%= f.label :public, class: 'checkbox' do %>
           <%= f.check_box :public %> Public wiki
         <% end %>
+        
+       <% if current_user.admin? || current_user.premium? %>
+          <h4>Add Collaborators</h4>
+          <div class="form-group">
+             <% if current_user && current_user.premium? %>
+              <%= render partial: 'collaborations/form', locals: { f: f, wiki: @wiki, collaborators: @wiki.collaborators } %> 
+             <% end %> 
+          </div>
+       <% end %>
+    
         </div>
        <% end %>
      <% end %>

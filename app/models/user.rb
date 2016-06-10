@@ -4,9 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
          
-  #validates :username, :presence => true, :uniqueness => {:case_sensitive => false}
+
   
-  has_many :wikis
+  has_many :wikis, dependent: :destroy
+  has_many :collaborators, through: :wikis
   
   before_save {self.email = email.downcase}
   after_initialize { self.role ||= :standard}  

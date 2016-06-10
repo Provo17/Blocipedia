@@ -17,8 +17,14 @@ class WikisController < ApplicationController
     @wiki.body = params[:wiki][:body]
     @wiki.public = params[:wiki][:public] if params[:wiki][:public]
     @wiki.user = current_user
+    @wiki.public = params[:wiki][:public] if params[:wiki][:public]
+    collaborator = User.find_by_email(params[:collaborator_email])
+
     
     if @wiki.save
+      if collaborator 
+        @wiki.collaborators << collaborator
+      end
       flash[:notice] = "\"#{@wiki.title}\" was created successfully."
       redirect_to @wiki
     else
@@ -29,18 +35,21 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
-    #authorize @wiki
+    authorize @wiki
     
-    unless @wiki.public || current_user
-      flash[:alert] = "You must be signed in to view private topics."
-      redirect_to new_session_path
+    unless @wiki.public 
+      if (current_user.admin? || @wiki.user = current_user || @wiki.collaborators.include?(current_user))
+        @wiki = Wiki.find(params[:id])
+      else
+        flash[:alert] = "You must be signed in to view private topics."
+        redirect_to new_session_path
+      end
     end    
   end
 
 
   def edit
     @wiki = Wiki.find(params[:id])
-    @wiki.user = current_user
     authorize @wiki
   end
   
@@ -49,10 +58,14 @@ class WikisController < ApplicationController
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     @wiki.public = params[:wiki][:public] if params[:wiki][:public]
-    @wiki.user = current_user
     authorize @wiki
+    collaborator = User.find_by_email(params[:collaborator_email])
+
     
     if @wiki.save
+      if collaborator && !@wiki.collaborators.include?(collaborator)
+        @wiki.collaborators << collaborator
+      end
       flash[:notice] = "Wiki was updated successfully"
       redirect_to @wiki
     else

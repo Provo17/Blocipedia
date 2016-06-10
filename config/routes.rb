@@ -2,6 +2,14 @@ Rails.application.routes.draw do
     
   resources :wikis
   
+  resources :wikis, only: [] do
+    resources :collaborators, only: [] do
+      member do
+        put :remove
+      end
+    end
+  end  
+  
   resources :charges, only: [:new, :create]  
 
   devise_for :users

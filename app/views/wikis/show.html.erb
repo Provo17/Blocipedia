@@ -4,8 +4,19 @@
    <div class="col-md-8">
      <p><%= markdown(@wiki.body) %></p>
    </div>
+   
+   
    <div class="col-md-4">
      <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
      <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-success' %>
    </div>
+   
+   <div class="col-md-12">
+    <h3>Collaborators:</h3> 
+      <% if !@wiki.collaborators.empty?%>
+        <% @wiki.collaborators.each do |collaborator| %>
+        <%= collaborator.email %></br>
+        <% end %>
+      <% end %>
+   </div> 
  </div>
