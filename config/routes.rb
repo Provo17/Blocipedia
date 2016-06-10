@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :wikis, only: [] do
     resources :collaborators, only: [] do
       member do
-        put :remove
+        put :delete
       end
     end
   end  
