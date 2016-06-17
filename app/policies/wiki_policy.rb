@@ -6,14 +6,14 @@ class WikiPolicy < ApplicationPolicy
 
   def show?
     if @wiki.public
+      return true
+    else
       if @user.role == 'premium'
           return true
       else
         #flash[:alert] = "You must be signed in to view premium member wikis."
         return false
       end
-    else
-      return true
     end
   end
   

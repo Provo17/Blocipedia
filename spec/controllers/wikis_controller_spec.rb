@@ -3,14 +3,15 @@ include Devise::TestHelpers
 
 RSpec.describe WikisController, type: :controller do
   
-  before do
-    @user = create(:user)
-    sign_in @user
-  end
+
   
   let(:my_user) { create(:user) }
   let(:my_wiki) { Wiki.create!(title: "New wiki title", body: "New wiki body", user: my_user ) } 
-  
+  let(:my_private_wiki) { Wiki.create!(title: "New Wiki Title", body: "New Wiki Body", public: false) }
+
+  before do
+    sign_in my_user
+  end
 
   describe "GET #index" do
     
@@ -19,9 +20,11 @@ RSpec.describe WikisController, type: :controller do
       expect(response).to have_http_status(:success)
     end
     
+  
     it "assigns my_wiki to @wiki" do
+      my_wiki
       get :index
-      expect(assigns(:wikis)).to eq(my_wiki)
+      expect(assigns(:wikis)).to eq([my_wiki])
     end
   end
   
