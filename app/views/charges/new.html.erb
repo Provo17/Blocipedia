@@ -2,10 +2,10 @@
    <h4>Click the button!</h4>
      <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_LMc2hhelxk5eAJcigjuc1EbD"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
     data-amount="1500"
     data-name="Account upgrade"
-    data-description="This will allow you to create private wikis"
+    data-description="Make a payment to the service provider"
     data-locale="auto">
   </script>
  <% end %>
