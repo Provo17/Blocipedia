@@ -1,7 +1,6 @@
 class WikisController < ApplicationController
   
-	#skip_before_filter :authenticate_user!, only: [:index, :show]
-	#before_action :set_wiki, only: [:show, :edit, :update, :destroy]
+  
   
   def index
     @wikis = policy_scope(Wiki)
@@ -41,7 +40,7 @@ class WikisController < ApplicationController
       if (current_user.admin? || @wiki.user = current_user || @wiki.collaborators.include?(current_user))
         @wiki = Wiki.find(params[:id])
       else
-        flash[:alert] = "You must be signed in to view private topics."
+        flash[:alert] = "You must be signed in to view private wikis."
         redirect_to new_session_path
       end
     end    
@@ -58,7 +57,7 @@ class WikisController < ApplicationController
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     @wiki.public = params[:wiki][:public] if params[:wiki][:public]
-    authorize @wiki
+    ##authorize @wiki
     collaborator = User.find_by_email(params[:collaborator_email])
 
     

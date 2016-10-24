@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   end
   
     
-  root 'wikis#index'
+  root 'welcome#index'
     
 end
