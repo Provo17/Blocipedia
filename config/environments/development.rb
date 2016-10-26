@@ -52,5 +52,5 @@ Rails.application.configure do
     :authentication => :cram_md5
   }
   #mailtrap
-  
+
 end
