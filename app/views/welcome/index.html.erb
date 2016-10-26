@@ -1,2 +1,58 @@
-<h1>Welcome to Blocipedia</h1>
-<p>An application that allows users to create public and private Markdown-based wikis.</p>
+
+<body>
+    
+        <div class="hero-content" style="background-image: url(<%= image_path('bookshelf.jpg') %>);">
+            <h1 class="hero-title">BLOCIPEDIA</h1>
+        </div>
+  
+    <div class="colum full cap">    
+        <h2>WELCOME TO WIKI PARADISE</h2>
+    </div>
+
+    <section class="selling-points clearfix">
+
+        <span>
+            <div class="points points column third">
+                <h3>Create Content</h3>
+                <span class="ion ion-compose"></span>
+                <p>Blocipedia is a site for creating and sharing wikis. It's easy and accessible to anyone on the web. </p>
+            </div>
+            <div class="points points column third">
+                <h3>Write in Markdown</h3>
+                <span class="ion ion-social-markdown"></span>
+                <p>Blocipedia provides the ability for you to conveniently write content in Markdown.</p>
+            </div>
+            <div class="points points column third">
+                <h3>Share Ideas</h3>
+                <span class="ion ion-lightbulb"></span>
+                <p>Blocipedia allows you to collaborate and share ideas, work, and knowledge with people around the world.</p>
+            </div>
+        </span>
+      
+ 
+    <div class="column full cap">
+        <h2>PREMIUM FEATURES</h2>
+    </div>
+        <span>   
+            <div class="points column third">
+                <h3>Upgrade</h3>
+                <span class="ion ion-cash"></span>
+                <p>For just $15 dollars you can upgrade your account!</p>
+            </div>        
+            <div class="points column third">
+                <h3>Make Content Private</h3>
+                <span class="ion ion-locked"></span>
+                <p>Blocipedia allows you to make your content private- where you have total control over who can access your wikis with a premium membership.</p>
+            </div>
+            <div class="points column third">
+                <h3>Add Collaborators</h3>
+                <span class="ion ion-person-add"></span>
+                <p>A Premium Membership lets you add and remove collaborators for your wikis.</p>
+            </div>
+        </span> 
+        
+    <div class="column full">
+        <%= link_to "Sign up", new_user_registration_path, :class => "button" %>
+    </div>        
+    </section>
+</body>

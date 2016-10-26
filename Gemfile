@@ -45,4 +45,7 @@ source 'https://rubygems.org'
  gem 'faker'
  #for markdown syntax
  gem 'redcarpet'
+ #normalize.css
+ gem 'normalize-rails'
+
 
