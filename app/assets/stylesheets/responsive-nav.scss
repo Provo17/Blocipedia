@@ -1,0 +1,62 @@
+.nav-collapse ul {
+  margin: 0px;
+  padding: 25px;
+  width: 100%;
+  display: block;
+  list-style: none;
+  overflow: hidden;
+  background-color: #058ED9;
+  font-size: 18px;
+}
+
+.nav-collapse li {
+  display: inline;
+}
+
+.nav-collapse li a {
+    display: inline;
+    color: white;
+    text-align: center;
+    padding: 15px 16px;
+    text-decoration: none;
+}
+
+.js .nav-collapse {
+  clip: rect(0 0 0 0);
+  max-height: 0;
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  zoom: 1;
+}
+
+.nav-collapse.opened {
+  max-height: 9999px;
+}
+
+.nav-toggle {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.logo {
+    font-family: 'Fredoka One', cursive;
+}
+
+@font-face {
+  font-family: "responsivenav";
+  src:url("../icons/responsivenav.eot");
+  src:url("../icons/responsivenav.eot?#iefix") format("embedded-opentype"),
+    url("../icons/responsivenav.ttf") format("truetype"),
+    url("../icons/responsivenav.woff") format("woff"),
+    url("../icons/responsivenav.svg#responsivenav") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
