@@ -1,6 +1,7 @@
 class WikisController < ApplicationController
   
-  
+  # skip_before_filter :authenticate_user!, only: [:index, :show]
+	#before_action :set_wiki, only: [:show, :edit, :update, :destroy]
   
   def index
     @wikis = policy_scope(Wiki)
@@ -18,7 +19,7 @@ class WikisController < ApplicationController
     @wiki.user = current_user
     @wiki.public = params[:wiki][:public] if params[:wiki][:public]
     collaborator = User.find_by_email(params[:collaborator_email])
-
+    # authorize @wiki
     
     if @wiki.save
       if collaborator 

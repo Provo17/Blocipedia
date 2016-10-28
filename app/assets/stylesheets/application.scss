@@ -27,9 +27,6 @@ html {
     font-size: 100%;
 } 
  
-.nav {
-  border-bottom: none;
-}
 
 body {
   width: 100%;
@@ -38,40 +35,19 @@ body {
 }
 
 
-.nav-tabs li a:hover {
-  background-color: #A39A92;
-  border-radius: 0px;
+.container {
+    margin: 0 auto;
+    max-width: 64rem;
 }
-.nav-tabs .logo a:hover {
-  background-color: white;
-  color: #058ED9;
-}
-.nav-tabs li.logo {
-  background-color: #058ED9;
-  font-family: 'Fredoka One', cursive;
-  color: white;
-}
-.nav-tabs .logo a {
-  color: white;
-}
-
-.dropdown-menu {
-    color: #F4EBD9;
-}
-
- .container {
-     margin: 0 auto;
-     max-width: 64rem;
- }
  
   /* Small Screens (200px) */
- @media (min-width: 200px) {
+ @media screen and (min-width: 200px) {
    .hero-title { font-size: 11vw; }
    
  }
  
   /* Medium screens (640px) */
- @media (min-width: 640px) {
+ @media screen and (min-width: 640px) {
      html { font-size: 112%; }
 
      .column {
@@ -93,7 +69,7 @@ body {
  }
 
  /* Large screens (1024px) */
- @media (min-width: 1024px) {
+ @media screen and (min-width: 1024px) {
      html { font-size: 120%; }
      
  }
