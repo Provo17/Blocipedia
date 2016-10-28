@@ -198,7 +198,7 @@
         this.options = {
           animate: true,                    // Boolean: Use CSS3 transitions, true or false
           transition: 284,                  // Integer: Speed of the transition, in milliseconds
-          label: "Menu",                    // String: Label for the navigation toggle
+          label: "Navigation",              // String: Label for the navigation toggle
           insert: "before",                 // String: Insert the toggle before or after the navigation
           customToggle: "",                 // Selector: Specify the ID of a custom toggle
           closeOnNavClick: false,           // Boolean: Close the navigation when one of the links are clicked
@@ -366,7 +366,7 @@
       },
 
       /**
-       * Takes care of all even handling
+       * Takes care of all event handling
        *
        * @param  {event} event
        * @return {type} returns the type of event that should be used

@@ -1,41 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html class="js">
 <head>
   <title>Blocipedia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'responsive-nav', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag    'responsive-nav.js', 'data-turbolinks-track' => true %>  
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300">
   <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">  
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'responsive-nav', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'landing', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'responsive-nav', 'data-turbolinks-track' => true %>   
+  <%= javascript_include_tag 'responsive-nav.js', 'data-turbolinks-track' => true %>  
   <%= csrf_meta_tags %>
 </head>
 
 <body style="background-color: #F4EBD9;">
   
+    <button id="toggle" class="closed">Menu</button>  
+  
   <nav class="nav-collapse">
     
       <ul>
-        <li class="logo" style="float:left"><%= link_to "BLOCIPEDIA", root_path %></li>
+        <li class="logo"><%= link_to "BLOCIPEDIA", root_path %></li>
 
     <% if user_signed_in? %>
-
-        <li style="float:right"><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-        <li style="float:right"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li> 
-        <li style="float:right"><%= link_to "View Wikis", wikis_path %></li>
-        <li style="float:right"><%= link_to "Create New Wiki", new_wiki_path %></li>        
+    <div style="float:right">
+        <li><%= link_to "View Wikis", wikis_path %></li>
+        <li><%= link_to "Create New Wiki", new_wiki_path %></li>
+        <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>        
+        <li><%= link_to "Sign Out", destroy_user_session_path, style: 'color:red;', method: :delete %></li>
+        
     
     <% else %>
     
-        <li style="float:right"><%= link_to "SIGN UP", new_user_registration_path %></li>
-        <li style="float:right"><%= link_to "SIGN IN", new_user_session_path %></li>
+        <li><%= link_to "SIGN UP", new_user_registration_path %></li>
+        <li><%= link_to "SIGN IN", new_user_session_path %></li>
         
     <% end %>
-    
+    </div>
       </ul>
   </nav>
   
@@ -60,7 +62,9 @@
   
   
     <script>
-        var nav = responsiveNav(".nav-collapse");
+      var navigation = responsiveNav(".nav-collapse", {
+        customToggle: "#toggle"
+      });
     </script>  
 
 </body>
