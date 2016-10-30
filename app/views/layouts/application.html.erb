@@ -3,12 +3,14 @@
 <head>
   <title>Blocipedia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="BYWJoFXpsZU_Av5tw09rEHosKb7ORM1LHpyhDNJdVT8" />  
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300">
   <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">  
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'responsive-nav', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'landing', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'wiki_index', media: 'all', 'data-turbolinks-track' => true %>  
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'responsive-nav.js', 'data-turbolinks-track' => true %>  
   <%= csrf_meta_tags %>
@@ -29,15 +31,15 @@
         <li><%= link_to "Create New Wiki", new_wiki_path %></li>
         <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>        
         <li><%= link_to "Sign Out", destroy_user_session_path, style: 'color:red;', method: :delete %></li>
-        
+    </div>    
     
     <% else %>
-    
+    <div class="float">
         <li><%= link_to "SIGN UP", new_user_registration_path %></li>
         <li><%= link_to "SIGN IN", new_user_session_path %></li>
-        
+    </div>  
     <% end %>
-    </div>
+    
       </ul>
   </nav>
   

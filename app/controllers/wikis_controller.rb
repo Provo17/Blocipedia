@@ -3,8 +3,11 @@ class WikisController < ApplicationController
   # skip_before_filter :authenticate_user!, only: [:index, :show]
 	#before_action :set_wiki, only: [:show, :edit, :update, :destroy]
   
+  require 'will_paginate/array' 
+  
   def index
     @wikis = policy_scope(Wiki)
+    @wikis = Wiki.paginate(page: params[:page], per_page: 10)
   end
 
   def new

@@ -47,5 +47,6 @@ source 'https://rubygems.org'
  gem 'redcarpet'
  #normalize.css
  gem 'normalize-rails'
-
+ #for wiki pagination
+ gem 'will_paginate-bootstrap'
 
