@@ -27,12 +27,8 @@ html {
     font-size: 100%;
 } 
  
+ 
 
-body {
-  width: 100%;
-  text-align: center;
-//   color: #331a00;
-}
 
 
 .container {
@@ -42,6 +38,8 @@ body {
  
   /* Small Screens (200px) */
  @media screen and (min-width: 200px) {
+   
+   
    .hero-title { font-size: 11vw; }
    
  }
@@ -49,6 +47,8 @@ body {
   /* Medium screens (640px) */
  @media screen and (min-width: 640px) {
      html { font-size: 112%; }
+     
+
 
      .column {
         float: left;
@@ -71,8 +71,9 @@ body {
  /* Large screens (1024px) */
  @media screen and (min-width: 1024px) {
      html { font-size: 120%; }
-     
  }
+ 
+
  
 .clearfix::before,
 .clearfix::after {

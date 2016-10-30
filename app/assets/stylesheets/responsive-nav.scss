@@ -57,6 +57,8 @@ button {
   cursor: pointer;
   background: #058ED9;
   width: 100%;
+  font-weight: bold;
+  font-size: 1.5em;
 }
 
 button.active {
@@ -78,9 +80,13 @@ button.active {
         display: none;
     }
     
+    .float { float: right;}    
+    
 }
 
 @media (max-width:640px){
+    
+ 
     
     .nav-toggle{
          background-color: white;

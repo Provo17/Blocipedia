@@ -1,0 +1,125 @@
+.jumbotron {
+    background-image: url(asset-path('jumbo3.jpg'));
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; 
+} 
+ 
+.jumbotron h1 {
+    color: white;
+} 
+ 
+.jumbotron p {
+    color: white;
+    font-size: 120%;
+}
+
+.jumbotron div {
+    margin: 10%;
+}
+ 
+.panel-group {
+    width: 89.51%;
+}
+
+.panel-heading {
+    font-family: 'Lora', serif;  
+    font-weight: bold;
+    font-size: 1.875em;
+    padding: 25px;
+    position: relative;
+    background-color: #058ED9;
+    white-space: nowrap;
+    
+    
+}
+
+.panel-heading span {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+    top: 0px;
+    left: 0px;
+    padding-top: 10px;
+    text-transform: capitalize;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.panel-heading span:hover {
+    background-color: #A39A92;
+}
+
+.panel-body {
+    text-overflow: ellipsis;
+    overflow: hidden;    
+    font-size: 16px;
+}
+
+.button2 {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px 24px;
+    border: 1px solid #a99204;
+    border-radius: 8px;
+    background: #ffef06;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffef06), to(#a99204));
+    background: -moz-linear-gradient(top, #ffef06, #a99204);
+    background: linear-gradient(to bottom, #ffef06, #a99204);
+    text-shadow: #796803 1px 1px 1px;
+    font: normal normal bold 20px trebuchet ms;
+    color: #ffffff;
+    text-decoration: none;
+}
+.button2:hover,
+.button2:focus {
+    border: 1px solid #f1d005;
+    background: #ffff07;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffff07), to(#cbaf05));
+    background: -moz-linear-gradient(top, #ffff07, #cbaf05);
+    background: linear-gradient(to bottom, #ffff07, #cbaf05);
+    color: #ffffff;
+    text-decoration: none;
+}
+.button2:active {
+    background: #a99204;
+    background: -webkit-gradient(linear, left top, left bottom, from(#a99204), to(#a99204));
+    background: -moz-linear-gradient(top, #a99204, #a99204);
+    background: linear-gradient(to bottom, #a99204, #a99204);
+}
+
+.points2 {
+  background-color: rgba(0, 0, 0, 0.5);    
+  color: white;
+  height: 350px;  
+  border: 2px solid #058ED9;  
+  border-radius: 8px;
+  font-size: 110%;
+  margin-top: 10px;
+}
+
+.points2 h3 {
+    font-size: 110%;
+    font-family: 'Fredoka One', cursive;
+}
+
+blockquote {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.page-header h1 {
+	
+	margin: 1em 0 0 0;
+	font-weight: 300;
+	font-family: 'Fredoka One', cursive;
+	position: relative;  
+	font-size: 4em;
+	color: #058ED9;
+	border-bottom-style: outset;
+	border-bottom-color: #A39A92;
+	border-radius: 0 10px 10px 10px;
+	width: 50%;
+	text-align: center;
+}

@@ -1,3 +1,7 @@
+body {
+  width: 100%;
+  text-align: center;
+}
 
 
 .hero-content {
@@ -38,14 +42,16 @@
 }
 
 .points {
+  color: #483D3F;
   height: 350px;  
   border: 2px solid #058ED9;  
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 110%;
   margin-top: 10px;
 }
 
-.points h3 {
+.points h3 {;
+    font-size: 110%;
     font-family: 'Fredoka One', cursive;
 }
 
@@ -91,8 +97,6 @@
     background: linear-gradient(to bottom, #1c5cca, #1c5cca);
 } 
 
-// @media (max-width: 640px) {
-//     .nav { display: inline; }
-// }
+
 
     

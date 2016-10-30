@@ -1,10 +1,67 @@
-<h1>All Wikis</h1>
-<% @wikis.each do |wiki| %>
-    <div class="media">
-        <div class="media-body">
-            <h4 class="media-heading">
-                <%= link_to wiki.title, wiki %>
-            </h4>
-        </div>
+<div class="container">
+    <div class="jumbotron">
+        
+            
+        <% if current_user.standard? %>  
+        
+            <h1>Try Our Premium Service</h1>
+    
+            <div class="points2 column third">
+                <h3>Inexpensive</h3>
+                <span class="ion ion-cash"></span>
+                <p>For just $15 dollars you can upgrade your account!</p>
+            </div>        
+            <div class="points2 column third">
+                <h3>Make Content Private</h3>
+                <span class="ion ion-locked"></span>
+                <p>Blocipedia allows you to make your content private- where you have total control over who can access your wikis.</p>
+            </div>
+            <div class="points2 column third">
+                <h3>Add Collaborators</h3>
+                <span class="ion ion-person-add"></span>
+                <p>A Premium Membership lets you add and remove collaborators for your wikis.</p>
+            </div>
+            
+            
+                <a><%= link_to "Upgrade Now!!!", new_charge_path, :class => "button2" %></a>
+           
+            
+        <% elsif current_user.premium? %>   
+        
+            <h1>Hello <strong><%= current_user.username %>!</strong></h1>
+            
+        <blockquote class="blockquote">    
+            <p><i>“We write to taste life twice, in the moment and in retrospect.”</i></p>
+            <p>― Anaïs Nin</p>
+        </blockquote>    
+        <% end %>    
+        
+      
+        
+  
+            
     </div>
-<% end %>
+</div>
+
+
+<div class="page-header" align="center">
+     <h1>Wikis</h1>
+</div>
+
+<div class="panel-group center-block">
+    <% @wikis.each do |wiki| %>
+      <div class="panel">
+        <div class="panel-heading"><%= link_to content_tag( :span, wiki.title), wiki, style: 'color:white;' %></div>  
+        <div class="panel-body"><%= wiki.body %>... </div>
+      </div>
+    <% end %>
+</div> 
+
+<%= will_paginate @wikis, renderer: BootstrapPagination::Rails %>
+ 
+
+
+
+
+
+
