@@ -1,3 +1,9 @@
+     <script>
+        $(document).on('turbolinks:load', function() {
+          $('input[type="checkbox"].toggle').bootstrapToggle(); 
+        });
+    </script>
+ 
  <h1>Edit Wiki</h1>
  
  <div class="row">
@@ -14,20 +20,25 @@
        <div class="form-group">
          <%= f.submit "Save", class: 'btn btn-success' %>
        </div>       
-       
-       <div class="form-group">
-       <% if current_user && (current_user.admin? || current_user.premium?) %>
-          <%= f.label :public, class: 'checkbox' do %>
-          <%= f.check_box :public %> Public wiki
-        <% end %>
+              
+     <% if current_user && (current_user.admin? || current_user.premium?) %>
+              <div class="form-inline clearfix" style="margin-bottom: 25px;">
+                <%= f.label :Make_wiki_public %>  
+                <%= f.check_box :public, class: "toggle", :data => {size: 'mini', on: 'Yes', onstyle: 'success', off: 'No', offstyle: 'danger' }  do %> 
+              </div>
+               <% end %>
         
-       <% if current_user.admin? || current_user.premium? %>
-          <div class="form-group">
-             <% if current_user && current_user.premium? %>
-              <%= render partial: 'collaborations/form', locals: { f: f, wiki: @wiki, collaborators: @wiki.collaborators } %> 
-             <% end %> 
-       <% end %>
-        </div>
+    <div>
+        <% unless @wiki.collaborators.empty?  %>
+           
+          <h4>Collaborators</h4> 
+          <ul class="list-group">
+            <% @wiki.collaborators.each do |collaborator| %>
+                <li class="list-group-item"><%= collaborator.email %> <%= link_to "Remove Collaborator", delete_wiki_collaborator_path(@wiki, id: collaborator.id), method: :put, class: "btn btn-danger" %></li>
+            <% end %>
+        <% end %>
+    </div>
+        
        <% end %>
      <% end %>
    </div>

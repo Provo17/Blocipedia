@@ -10,15 +10,16 @@
      <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
      <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-success' %>
    </div>
-   
-   <div class="col-md-12">
-    <h3>Collaborators:</h3> 
-      <% if !@wiki.collaborators.empty?%>
-        <% @wiki.collaborators.each do |collaborator| %>
-        <%= collaborator.email %></br>
-        <% end %>
-      <% end %>
-   </div> 
  </div>
+ 
+    <div>
+        <% unless @wiki.collaborators.empty?  %>
+    <h4>Collaborators</h4> 
+          <ul class="list-group">
+            <% @wiki.collaborators.each do |collaborator| %>
+                <li class="list-group-item"><%= collaborator.email %> <%= link_to "Remove Collaborator", delete_wiki_collaborator_path(@wiki, id: collaborator.id), method: :put, class: "btn btn-danger" %></li>
+            <% end %>
+        <% end %>
+    </div>
  
  <!-- removed the  _listing form from the show. I only want a list of shown.-->
