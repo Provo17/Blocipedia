@@ -17,9 +17,8 @@
     <h4>Collaborators</h4> 
           <ul class="list-group">
             <% @wiki.collaborators.each do |collaborator| %>
-                <li class="list-group-item"><%= collaborator.email %> <%= link_to "Remove Collaborator", delete_wiki_collaborator_path(@wiki, id: collaborator.id), method: :put, class: "btn btn-danger" %></li>
+                <li class="list-group-item"><%= collaborator.username %> <%= link_to "Remove Collaborator", delete_wiki_collaborator_path(@wiki, id: collaborator.id), method: :put, class: "btn btn-danger" %></li>
             <% end %>
         <% end %>
     </div>
  
- <!-- removed the  _listing form from the show. I only want a list of shown.-->
