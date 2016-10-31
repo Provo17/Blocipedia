@@ -44,6 +44,8 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap-toggle-rails (2.2.1.0)
+    bootstrap_form (2.5.2)
     builder (3.2.2)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -213,6 +215,8 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  bootstrap-toggle-rails
+  bootstrap_form
   coffee-rails (~> 4.1.0)
   devise
   factory_girl_rails (~> 4.0)

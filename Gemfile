@@ -49,4 +49,8 @@ source 'https://rubygems.org'
  gem 'normalize-rails'
  #for wiki pagination
  gem 'will_paginate-bootstrap'
+ #uses bootstrap for rails forms
+ gem 'bootstrap_form'
+ #for bootstrap js switch
+ gem 'bootstrap-toggle-rails'
 

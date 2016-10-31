@@ -5,6 +5,7 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( landing.css )
 Rails.application.config.assets.precompile += %w( responsive-nav.css )
 Rails.application.config.assets.precompile += %w( wiki_index.css )
+Rails.application.config.assets.precompile += %w( wiki_new.css )
 Rails.application.config.assets.precompile += %w( responsive-nav.js )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
