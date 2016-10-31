@@ -1,45 +1,54 @@
-     <script>
-        $(document).on('turbolinks:load', function() {
-          $('input[type="checkbox"].toggle').bootstrapToggle(); 
-        });
-    </script>
+<div class="page-header" align="center">
+    <h1>Edit Wiki</h1>
+</div> 
  
- <h1>Edit Wiki</h1>
- 
- <div class="row">
-   <div class="col-md-8">
-     <%= form_for @wiki do |f| %>
-       <div class="form-group">
-         <%= f.label :title %>
-         <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
-       </div>
-       <div class="form-group">
-         <%= f.label :body %>
-         <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
-       </div>
-       <div class="form-group">
-         <%= f.submit "Save", class: 'btn btn-success' %>
-       </div>       
-              
-     <% if current_user && (current_user.admin? || current_user.premium?) %>
+    <div class="panel">
+        <%= form_for @wiki do |f| %>
+        
+            <div class="form-group panel-heading">
+                <%= f.label :title %>
+                <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
+            </div>
+            
+            <div class="form-group panel-body">
+                <%= f.label :body %>
+                <%= f.text_area :body,  rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
+            </div>
+            
+    
+            <% if current_user.admin? || current_user.premium? %>
               <div class="form-inline clearfix" style="margin-bottom: 25px;">
                 <%= f.label :Make_wiki_public %>  
                 <%= f.check_box :public, class: "toggle", :data => {size: 'mini', on: 'Yes', onstyle: 'success', off: 'No', offstyle: 'danger' }  do %> 
+                <% end %>
               </div>
-               <% end %>
+            <% end %>
+        
+            <% if current_user.admin? || current_user.premium? %>
+    
+                  <div class="form-group">
+                     <% if current_user && current_user.premium? %>
+                         <%= render partial: 'collaborations/form', locals: { f: f, wiki: @wiki, collaborators: @wiki.collaborators } %>
+                     <% end %> 
+                  </div>
+            <% end %> 
+            
+            <div class="form-group">
+              <%= f.submit "Save", class: 'btn btn-success' %>
+            </div>            
+    
+       <% end %>
+   </div>
+   
+           <% unless @wiki.collaborators.empty?  %>
         
     <div>
-        <% unless @wiki.collaborators.empty?  %>
-           
-          <h4>Collaborators</h4> 
+        <h4>Collaborators</h4>
+    </div>    
+    <div class="list">  
           <ul class="list-group">
             <% @wiki.collaborators.each do |collaborator| %>
-                <li class="list-group-item"><%= collaborator.email %> <%= link_to "Remove Collaborator", delete_wiki_collaborator_path(@wiki, id: collaborator.id), method: :put, class: "btn btn-danger" %></li>
+                <li class="list-group-item"><span><%= collaborator.username %></span> <%= link_to "Remove Collaborator", delete_wiki_collaborator_path(@wiki, id: collaborator.id), method: :put, class: "btn btn-danger btn-xs" %></li> <br/>
             <% end %>
         <% end %>
     </div>
-        
-       <% end %>
-     <% end %>
-   </div>
- </div>

@@ -1,0 +1,41 @@
+.list {
+    width: 50%;
+    margin: 0 auto;
+}
+
+li.list-group-item, {
+    color: white;
+    background-color: #058ED9;
+}
+
+span {
+    font-size: 1.5em;
+    font-family: 'Lora', serif;
+    font-weight: bold;
+    margin-right: 50%;
+}
+
+h4 {;
+	font-weight: 300;
+	font-family: 'Fredoka One', cursive;
+	font-size: 165%;
+	color: #058ED9;
+	border-bottom-style: outset;
+	border-bottom-color: #A39A92;
+	border-radius: 0 10px 10px 10px;
+	width: 50%;
+	text-align: center;
+	margin: 25px auto 25px;
+}
+
+.panel {
+    margin-bottom: 50px;
+}
+
+
+
+@media screen and (max-width: 640px) {
+    span {
+        margin: 0;
+    }
+}
