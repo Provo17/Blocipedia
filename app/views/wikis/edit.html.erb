@@ -34,7 +34,7 @@
             <% end %> 
             
             <div class="form-group">
-              <%= f.submit "Save", class: 'btn btn-success' %>
+              <%= f.submit "Update", class: 'btn btn-success' %>
             </div>            
     
        <% end %>
@@ -45,10 +45,10 @@
     <div>
         <h4>Collaborators</h4>
     </div>    
-    <div class="list">  
+    <div>  
           <ul class="list-group">
             <% @wiki.collaborators.each do |collaborator| %>
-                <li class="list-group-item"><span><%= collaborator.username %></span> <%= link_to "Remove Collaborator", delete_wiki_collaborator_path(@wiki, id: collaborator.id), method: :put, class: "btn btn-danger btn-xs" %></li> <br/>
+                <li class="list-group-item"><%= collaborator.username %> <br/> <%= link_to "Remove", delete_wiki_collaborator_path(@wiki, id: collaborator.id), method: :put, class: "btn btn-danger btn-xs" %></li>
             <% end %>
         <% end %>
     </div>

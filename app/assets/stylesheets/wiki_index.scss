@@ -123,3 +123,15 @@ blockquote {
 	width: 50%;
 	text-align: center;
 }
+
+
+@media screen and (max-width: 320px) {
+
+    
+    h1.xs {
+        font-size: 250%;
+        width: 75%;
+    }
+    
+
+}
