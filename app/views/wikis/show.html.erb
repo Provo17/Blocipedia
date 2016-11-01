@@ -1,23 +1,26 @@
- <h1><%= @wiki.title %></h1>
+<head>
+    <%= stylesheet_link_tag    'wiki_show', media: 'all', 'data-turbolinks-track' => true %>
+</head>
+
+
+<div class="panel center-block">
+    <div class="panel-heading show"><%= @wiki.title %></div>
+    <div class="panel-body"><%= markdown(@wiki.body) %></div>
+    <div>
+        <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
+        <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger' %>
+    </div>
+</div>
+   
+
  
- <div class="row">
-   <div class="col-md-8">
-     <p><%= markdown(@wiki.body) %></p>
-   </div>
-   
-   
-   <div class="col-md-4">
-     <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
-     <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-success' %>
-   </div>
- </div>
  
     <div>
         <% unless @wiki.collaborators.empty?  %>
     <h4>Collaborators</h4> 
           <ul class="list-group">
             <% @wiki.collaborators.each do |collaborator| %>
-                <li class="list-group-item"><%= collaborator.username %> <%= link_to "Remove Collaborator", delete_wiki_collaborator_path(@wiki, id: collaborator.id), method: :put, class: "btn btn-danger" %></li>
+                <li class="list-group-item"><%= collaborator.username %></li>
             <% end %>
         <% end %>
     </div>

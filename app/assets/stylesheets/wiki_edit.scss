@@ -1,21 +1,19 @@
-.list {
+.list-group {
     width: 50%;
-    margin: 0 auto;
+    margin: 0 auto 50px;
 }
 
-li.list-group-item, {
+li.list-group-item {
+    width: 100%;
     color: white;
     background-color: #058ED9;
-}
-
-span {
     font-size: 1.5em;
     font-family: 'Lora', serif;
     font-weight: bold;
-    margin-right: 50%;
 }
 
-h4 {;
+
+h4 {
 	font-weight: 300;
 	font-family: 'Fredoka One', cursive;
 	font-size: 165%;
@@ -34,8 +32,15 @@ h4 {;
 
 
 
-@media screen and (max-width: 640px) {
-    span {
-        margin: 0;
+@media screen and (max-width: 320px) {
+
+    
+    h4 {
+        font-size: 120%;
+        width: 50%;
     }
+    
+    li.list-group-item {
+        font-size: 100%;
+    }    
 }

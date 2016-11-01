@@ -45,19 +45,19 @@
 
 
 <div class="page-header" align="center">
-     <h1>Wikis</h1>
+     <h1 class="xs">Wikis</h1>
 </div>
 
 <div class="panel-group center-block">
     <% @wikis.each do |wiki| %>
       <div class="panel">
         <div class="panel-heading"><%= link_to content_tag( :span, wiki.title), wiki, style: 'color:white;' %></div>  
-        <div class="panel-body"><%= wiki.body %>... </div>
+        <div class="panel-body"><%= wiki.body.truncate(50) %>... </div>
       </div>
     <% end %>
 </div> 
 
-<%= will_paginate @wikis, renderer: BootstrapPagination::Rails %>
+<div class="willp"><%= will_paginate @wikis, renderer: BootstrapPagination::Rails %></div>
  
 
 
