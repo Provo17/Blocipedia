@@ -42,14 +42,15 @@
   <h3>Upgrade my account</h3>
 
   <%= form_tag charges_path do %>
-  <div class="stripe-button-container">
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button active" data-key="pk_test_I12pwu7A49P8yPKqVcmqATRy" data-amount="2000" data-name="Demo Site" data-description="2 widgets" data-image="/img/documentation/checkout/marketplace.png" data-locale="auto" data-notrack="">
-  1
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_I12pwu7A49P8yPKqVcmqATRy"
+    data-amount="999"
+    data-name="Demo Site"
+    data-description="Widget"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto">
   </script>
-  <button type="submit" class="stripe-button-el" style="visibility: visible;">
-  <span style="display: block; min-height: 30px;">Subscribe now!</span>
-  </button>
-  </div>
   <%end%>
   
 <% elsif current_user.premium? %>
